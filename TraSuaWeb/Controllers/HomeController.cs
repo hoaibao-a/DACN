@@ -25,7 +25,9 @@ namespace TraSuaWeb.Controllers
         public IActionResult Index()
         {
             HomeVM model = new HomeVM();
-            var lssangpham = _context.SanPhams.AsNoTracking()
+            var lssangpham = _context.SanPhams
+                .Include(x => x.MaLoaiNavigation)//MaLoaiNavigation
+                .AsNoTracking()
             .Where(x => x.TinhTrang == true && x.AnHien==true)
             .OrderByDescending(x => x.NgayTao)
             .ToList();
@@ -38,7 +40,7 @@ namespace TraSuaWeb.Controllers
             {
 
                 ProductHomeVM producthome = new ProductHomeVM();
-                producthome.loaisps= item;
+                producthome.loaisanpham = item;
                 producthome.lssanpham = lssangpham.Where(x => x.MaLoai == item.MaLoai).ToList();
                 lssanphamView.Add(producthome);
             }

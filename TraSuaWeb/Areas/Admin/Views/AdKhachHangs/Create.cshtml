@@ -40,7 +40,16 @@
                         <label class="font-weight-semibold" for="productPrice">Địa chỉ</label>
                         <input type="text" class="form-control" asp-for="DiaChi">
                     </div>
-
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="productStatus">Trạng thái</label>
+                        <div class="form-group d-flex align-items-center">
+                            <div class="switch m-r-10">
+                                <input type="checkbox" asp-for="Tinhtrang" checked="">
+                                <label for="Tinhtrang"></label>
+                            </div>
+                            <label>Trạng thái tài khoản</label>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <input type="submit" value="Lưu" class="btn btn-primary" />

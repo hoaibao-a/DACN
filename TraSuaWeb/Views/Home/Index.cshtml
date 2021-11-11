@@ -148,25 +148,25 @@
         <div class="row">
             <div class="col-lg-12">
                 <ul class="nav product-tab-nav pb-10" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item" role="pronesentati">
                         <a class="active" id="all-items-tab" data-bs-toggle="tab" href="#all-items" role="tab" aria-controls="all-items" aria-selected="true">
                             <div class="product-tab-icon">
                                 <img src="~/User/assets/images/product/icon/1.png" alt="Product Icon">
                             </div>
                             All Items
                         </a>
+                    </li>
                         @foreach (var item in Model.sanphams)
                         {
-                        <li class="nav-item" role="presentation">
-                            <a id="all-items-tab" data-bs-toggle="tab" href="#@item.loaisps.MaLoai" role="tab" aria-controls="all-items" aria-selected="true">
-                                <div class="product-tab-icon">
-                                    <img src="~/images/Anhloaisp/@item.loaisps.Anh" alt="@item.loaisps.TenLoai.">
-                                </div>
-                                @item.loaisps.TenLoai
-                            </a>
-                        </li>
+                <li class="nav-item" role="presentation">
+                    <a id="all-items-tab" data-bs-toggle="tab" href="#@item.loaisanpham.TenLoai" role="tab" aria-controls="@item.loaisanpham.TenLoai" aria-selected="true">
+                        <div class="product-tab-icon">
+                            <img src="~/images/Anhloaisp/@item.loaisanpham.Anh" alt="@item.loaisanpham.TenLoai.">
+                        </div>
+                        @item.loaisanpham.TenLoai
+                    </a>
+                </li>
                         }
-                        </li>
                     </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="all-items" role="tabpanel" aria-labelledby="all-items-tab">
@@ -174,9 +174,9 @@
                     </div>
                     @foreach (var item in Model.sanphams)
                     {
-                        <div class="tab-pane fade" id="@item.loaisps.MaLoai" role="tabpanel" aria-labelledby="fresh-fruits-tab">
-                            @await Html.PartialAsync("_listProductPatialView", item.lssanpham)
-                        </div>
+                <div class="tab-pane fade" id="@item.loaisanpham.TenLoai" role="tabpanel" aria-labelledby="fresh-fruits-tab">
+                    @await Html.PartialAsync("_listProductPatialView", item.lssanpham)
+                </div>
                     }
                 </div>
             </div>

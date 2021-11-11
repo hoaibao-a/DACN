@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +10,6 @@ using TraSuaWeb.Models;
 namespace TraSuaWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]//xac thuc tk
     public class AdHoaDonController : Controller
     {
         private readonly DBtrasuaContext _context;
@@ -54,7 +52,7 @@ namespace TraSuaWeb.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewData["HiperId"] = new SelectList(_context.Shippers, "HiperId", "HiperId");
-            ViewData["MaHd"] = new SelectList(_context.TinhTrangs, "Id", "Id");
+            ViewData["Id"] = new SelectList(_context.TinhTrangs, "Id", "Id");
             ViewData["MaKh"] = new SelectList(_context.KhachHangs, "MaKh", "MaKh");
             ViewData["MaTu"] = new SelectList(_context.TuHangs, "MaTu", "MaTu");
             return View();
@@ -65,7 +63,7 @@ namespace TraSuaWeb.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaHd,MaKh,ThanhToan,NgayDat,MaTu,DiaChiGiaoHang,TongTien,Soluong,HiperId")] HoaDon hoaDon)
+        public async Task<IActionResult> Create([Bind("MaHd,MaKh,ThanhToan,NgayDat,MaTu,DiaChiGiaoHang,TongTien,Soluong,HiperId,TrangThai,Id")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +72,7 @@ namespace TraSuaWeb.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["HiperId"] = new SelectList(_context.Shippers, "HiperId", "HiperId", hoaDon.HiperId);
-            ViewData["MaHd"] = new SelectList(_context.TinhTrangs, "Id", "Id", hoaDon.MaHd);
+            ViewData["Id"] = new SelectList(_context.TinhTrangs, "Id", "Id", hoaDon.Id);
             ViewData["MaKh"] = new SelectList(_context.KhachHangs, "MaKh", "MaKh", hoaDon.MaKh);
             ViewData["MaTu"] = new SelectList(_context.TuHangs, "MaTu", "MaTu", hoaDon.MaTu);
             return View(hoaDon);
@@ -94,7 +92,7 @@ namespace TraSuaWeb.Areas.Admin.Controllers
                 return NotFound();
             }
             ViewData["HiperId"] = new SelectList(_context.Shippers, "HiperId", "HiperId", hoaDon.HiperId);
-            ViewData["MaHd"] = new SelectList(_context.TinhTrangs, "Id", "Id", hoaDon.MaHd);
+            ViewData["Id"] = new SelectList(_context.TinhTrangs, "Id", "Id", hoaDon.Id);
             ViewData["MaKh"] = new SelectList(_context.KhachHangs, "MaKh", "MaKh", hoaDon.MaKh);
             ViewData["MaTu"] = new SelectList(_context.TuHangs, "MaTu", "MaTu", hoaDon.MaTu);
             return View(hoaDon);
@@ -105,7 +103,7 @@ namespace TraSuaWeb.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MaHd,MaKh,ThanhToan,NgayDat,MaTu,DiaChiGiaoHang,TongTien,Soluong,HiperId")] HoaDon hoaDon)
+        public async Task<IActionResult> Edit(int id, [Bind("MaHd,MaKh,ThanhToan,NgayDat,MaTu,DiaChiGiaoHang,TongTien,Soluong,HiperId,TrangThai,Id")] HoaDon hoaDon)
         {
             if (id != hoaDon.MaHd)
             {
@@ -133,7 +131,7 @@ namespace TraSuaWeb.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["HiperId"] = new SelectList(_context.Shippers, "HiperId", "HiperId", hoaDon.HiperId);
-            ViewData["MaHd"] = new SelectList(_context.TinhTrangs, "Id", "Id", hoaDon.MaHd);
+            ViewData["Id"] = new SelectList(_context.TinhTrangs, "Id", "Id", hoaDon.Id);
             ViewData["MaKh"] = new SelectList(_context.KhachHangs, "MaKh", "MaKh", hoaDon.MaKh);
             ViewData["MaTu"] = new SelectList(_context.TuHangs, "MaTu", "MaTu", hoaDon.MaTu);
             return View(hoaDon);

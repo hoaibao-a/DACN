@@ -23,9 +23,10 @@
                 <th scope="col">ID</th>
                 <th scope="col">Tên khách hàng</th>
                 <th scope="col">Email</th>
-                <th scope="col">Password</th>
+                @*<th scope="col">Password</th>*@
                 <th scope="col">Số điện thoai</th>
                 <th scope="col">Địa chỉ</th>
+                <th scope="col">Tình trạng</th>
                 <th scope="col">chức năng</th>
             </tr>
         </thead>
@@ -38,9 +39,26 @@
                 <th scope="row">@item.MaKh</th>
                 <td>@item.TenKh</td>
                 <td>@item.Email</td>
-                <td>@item.Password</td>
+                @*<td>@item.Password</td>*@
                 <td>@item.Sðt</td>
                 <td>@item.DiaChi</td>
+                <td>
+                    @if (item.Tinhtrang)
+                    {
+                        <div class="d-flex align-items-center">
+                            <div class="badge badge-success badge-dot m-r-10"></div>
+                            <div>Còn</div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex align-items-center">
+                            <div class="badge badge-danger badge-dot m-r-10"></div>
+                            <div>Hết</div>
+                        </div>
+                    }
+
+                </td>
                 <td>
                     <a asp-area="Admin" asp-controller="AdKhachHangs" asp-action="Edit" asp-route-id="@item.MaKh" class="btn btn-info m-r-5">Sửa</a>
                     <a asp-area="Admin" asp-controller="AdKhachHangs" asp-action="Details" asp-route-id="@item.MaKh" class="btn btn-warning m-r-5">Chi tiết</a>

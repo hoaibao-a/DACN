@@ -34,15 +34,15 @@ namespace TraSuaWeb.Controllers
                 return RedirectToAction("index", "Home");
             }
         }
-        //[Route("/{maloai}", Name = "danhsachsanpham")]
+        //[Route("/{tenloai}", Name = "danhsachsanpham")]
         //public IActionResult List(string maloai, int page = 1)
         //{
         //    try
         //    {
         //        var pageSize = 10;
-        //        var danhmuc = _context.LoaiSps.AsNoTracking().SingleOrDefault(x => x.MaLoai == maloai);
+        //        var danhmuc = _context.LoaiSps.AsNoTracking().SingleOrDefault(x => x.MaLoai== maloai);
         //        var lssanpham = _context.SanPhams.AsNoTracking()
-        //           .Where(x => x.MaLoai == maloai)
+        //           .Where(x => x.MaLoai == danhmuc.MaLoai)
         //            .OrderByDescending(x => x.MaLoai);
         //        PagedList<SanPham> models = new PagedList<SanPham>(lssanpham, page, pageSize);
         //        ViewBag.CurrentPage = page;

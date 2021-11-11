@@ -54,7 +54,7 @@ namespace TraSuaWeb.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaKh,TenKh,Sðt,DiaChi,Email,Password")] KhachHang khachHang)
+        public async Task<IActionResult> Create([Bind("MaKh,TenKh,Sðt,DiaChi,Email,Password,Tinhtrang")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace TraSuaWeb.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MaKh,TenKh,Sðt,DiaChi,Email,Password")] KhachHang khachHang)
+        public async Task<IActionResult> Edit(int id, [Bind("MaKh,TenKh,Sðt,DiaChi,Email,Password,Tinhtrang")] KhachHang khachHang)
         {
             if (id != khachHang.MaKh)
             {

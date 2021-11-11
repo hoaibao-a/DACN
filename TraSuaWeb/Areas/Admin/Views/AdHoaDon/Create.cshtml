@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="MaKh" class="control-label"></label>
-                <select asp-for="MaKh" class ="form-control" asp-items="ViewBag.MaKh"></select>
+                <select asp-for="MaKh" class="form-control" asp-items="ViewBag.MaKh"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ThanhToan" class="control-label"></label>
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="MaTu" class="control-label"></label>
-                <select asp-for="MaTu" class ="form-control" asp-items="ViewBag.MaTu"></select>
+                <select asp-for="MaTu" class="form-control" asp-items="ViewBag.MaTu"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DiaChiGiaoHang" class="control-label"></label>
@@ -48,7 +48,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="HiperId" class="control-label"></label>
-                <select asp-for="HiperId" class ="form-control" asp-items="ViewBag.HiperId"></select>
+                <select asp-for="HiperId" class="form-control" asp-items="ViewBag.HiperId"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TrangThai" /> @Html.DisplayNameFor(model => model.TrangThai)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <select asp-for="Id" class="form-control" asp-items="ViewBag.Id"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

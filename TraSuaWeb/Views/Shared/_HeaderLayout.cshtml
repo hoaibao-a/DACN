@@ -68,8 +68,15 @@
                                         <i class="pe-7s-users"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButton">
-                                        <li><a class="dropdown-item" href="my-account.html">My account</a></li>
-                                        <li><a class="dropdown-item" href="login-register.html">Login | Register</a></li>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <li><a class="dropdown-item" href="/tai-khoan-cua-toi.html">Tài khoản của tôi</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a class="dropdown-item" href="dang-ky.html">Đăng ký tài khoản</a></li>
+                                            <li><a class="dropdown-item" href="dang-nhap.html">Đăng nhập tài khoản</a></li>
+                                        }
                                     </ul>
                                 </li>
                                 <li class="d-none d-md-block">
@@ -109,12 +116,12 @@
                             <nav class="main-nav">
                                 <ul>
                                     <li class="drop-holder">
-                                        <a href="javascript:void(0)">
-                                            Home                                           
-                                        </a>                                        
+                                        <a href="/">
+                                            Trang chủ
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="about.html">About</a>
+                                        <a href="about.html">Về chúng tôi</a>
                                     </li>
                                     <li class="megamenu-holder">
                                         <a asp-controller="Product" asp-action="index">Shop</a>
@@ -123,7 +130,7 @@
                                         <a asp-controller="Blog" asp-action="index">Blog</a>                                  
                                     </li>
                                     <li>
-                                        <a href="contact.html">Contact</a>
+                                        <a href="contact.html">LIên hệ </a>
                                     </li>
                                 </ul>
                             </nav>
@@ -168,8 +175,15 @@
                                 <i class="pe-7s-users"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButtonTwo">
-                                <li><a class="dropdown-item" href="my-account.html">My account</a></li>
-                                <li><a class="dropdown-item" href="login-register.html">Login | Register</a></li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li><a class="dropdown-item" href="/tai-khoan-cua-toi.html">Tài khoản của tôi</a></li>
+                                }
+                                else
+                                {
+                                    <li><a class="dropdown-item" href="dang-ky.html">Đăng ký tài khoản</a></li>
+                                    <li><a class="dropdown-item" href="dang-nhap.html">Đăng nhập tài khoản</a></li>
+                                }
                             </ul>
                         </li>
                         <li>

@@ -8,9 +8,11 @@ namespace TraSuaWeb.ModelView
 {
     public class dangnhapViewModel
     {
-     
+        [Key]
         [MaxLength(50)]
         [Required(ErrorMessage = "Vui lòng nhập Email")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         [Display(Name = "Dia chi Email")]
         public string Email { get; set; }
 

@@ -8,7 +8,7 @@ namespace TraSuaWeb.ModelView
 {
     public class ProductHomeVM
     {
-        public LoaiSp loaisps { get; set; }
+        public LoaiSp loaisanpham { get; set; }
         public List<SanPham> lssanpham { get; set; }
     }
 }
