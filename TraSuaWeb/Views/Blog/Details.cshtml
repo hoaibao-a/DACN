@@ -1,0 +1,101 @@
+﻿@model TraSuaWeb.Models.Tintuc
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string Url = $"/tintuc/{Model.TieuDe}-{Model.IdTt}.html";
+}
+<!-- Begin Main Content Area -->
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="~/User/assets/images/breadcrumb/bg/1-1-1920x373.jpg">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h1 class="breadcrumb-heading">@Model.TieuDe</h1>
+                        <ul>
+                            <li>
+                                <a href="index.html">Trang chủ<i class="pe-7s-angle-right"></i></a>
+                            </li>
+                            <li>@Model.TieuDe</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blog-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="blog-detail-item">
+                        <div class="blog-img">
+                            <img class="img-full" width="60px" src="~/images/AnhTinTuc/@Model.AnhGt" alt="Blog Image">
+                        </div>
+                        <div class="blog-content text-start pb-0">
+                            <div class="blog-meta text-dim-gray pb-3">
+                                <ul>
+                                    @*<li class="date"><i class="fa fa-calendar-o me-2"></i>May 21, 2021</li>*@
+                                    <li>
+                                        <span class="comments me-3">
+                                            <a href="javascript:void(0)">2 Comments</a>
+                                        </span>
+                                        <span class="link-share">
+                                            <a href="javascript:void(0)">Share</a>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h5 class="title mb-4">
+                                <a href="@Url">@Model.TieuDe</a>
+                            </h5>                        
+                            @Html.Raw(Model.MoTa)                           
+                            <div class="blog-comment pt-10">
+                                <h4 class="heading mb-7">02 Comments</h4>
+                                <div class="blog-comment-item mb-8">
+                                    <div class="blog-comment-img">
+                                        <img src="~/User/assets/images/avatar/1.jpg" alt="Avatar">
+                                    </div>
+                                    <div class="blog-comment-content">
+                                        <div class="user-meta">
+                                            <span><strong>Aidyn Cody -</strong> Jul 21,2021 at 15 hours ago</span>
+                                            <a class="btn btn-link hover-white d-none d-md-flex" href="javascript:void(0)">
+                                                <i class="fa fa-reply me-2"></i>
+                                                Reply
+                                            </a>
+                                        </div>
+                                        <span class="user-occupation text-primary">Web Developer</span>                                     
+                                        <a class="btn btn-link hover-white d-inline-flex d-md-none mt-5" href="javascript:void(0)">
+                                            <i class="fa fa-reply me-2"></i>
+                                            Reply
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="blog-comment-item">
+                                    <div class="blog-comment-img">
+                                        <img src="~/User/assets/images/avatar/2.jpg" alt="Avatar">
+                                    </div>
+                                    <div class="blog-comment-content">
+                                        <div class="user-meta">
+                                            <span><strong>Aidyn Cody -</strong> Jul 21,2021 at 15 hours ago</span>
+                                            <a class="btn btn-link hover-white d-none d-md-flex" href="javascript:void(0)">
+                                                <i class="fa fa-reply me-2"></i>
+                                                Reply
+                                            </a>
+                                        </div>
+                                        <span class="user-occupation text-primary">Web Developer</span>
+                                        <p class="user-comment mb-0">Comment example here. Nulla risus lacus, vehicula id mi vitae, auctor accumsan nulla. Sed a dolor sit amrt paremi quam. Lorem In euismod urna ac massa adipiscing interdum.</p>
+                                        <a class="btn btn-link hover-white d-inline-flex d-md-none mt-5" href="javascript:void(0)">
+                                            <i class="fa fa-reply me-2"></i>
+                                            Reply
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Main Content Area End Here -->
