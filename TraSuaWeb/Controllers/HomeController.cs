@@ -36,6 +36,7 @@ namespace TraSuaWeb.Controllers
 
             foreach(var item in lsloais)
             {
+
                 ProductHomeVM producthome = new ProductHomeVM();
                 producthome.loaisps= item;
                 producthome.lssanpham = lssangpham.Where(x => x.MaLoai == item.MaLoai).ToList();
