@@ -94,9 +94,9 @@ namespace TraSuaWeb.Controllers
             }
 
         }
+        [Route("gioahang.html", Name = "giohang")]
         public IActionResult Index()
         {
-            List<int> lssanpham = new List<int>();
             var lsGioHang = GioHang;
             return View(GioHang);
         }

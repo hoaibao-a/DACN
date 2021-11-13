@@ -34,26 +34,26 @@ namespace TraSuaWeb.Controllers
                 return RedirectToAction("index", "Home");
             }
         }
-        //[Route("/{tenloai}", Name = "danhsachsanpham")]
-        //public IActionResult List(string maloai, int page = 1)
-        //{
-        //    try
-        //    {
-        //        var pageSize = 10;
-        //        var danhmuc = _context.LoaiSps.AsNoTracking().SingleOrDefault(x => x.MaLoai== maloai);
-        //        var lssanpham = _context.SanPhams.AsNoTracking()
-        //           .Where(x => x.MaLoai == danhmuc.MaLoai)
-        //            .OrderByDescending(x => x.MaLoai);
-        //        PagedList<SanPham> models = new PagedList<SanPham>(lssanpham, page, pageSize);
-        //        ViewBag.CurrentPage = page;
-        //        ViewBag.Currentloai = danhmuc;
-        //        return View(models);
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction("index", "Home");
-        //    }
-        //}
+        [Route("/tenloai.html", Name = "danhsachsanpham")]
+        public IActionResult danhsachsanpham(string tenloai, int page = 1)
+        {
+            try
+            {
+                var pageSize = 10;
+                var danhmuc = _context.LoaiSps.AsNoTracking().SingleOrDefault(x => x.TenLoai == tenloai);
+                var lssanpham = _context.SanPhams.AsNoTracking()
+                   .Where(x => x.MaLoai == danhmuc.MaLoai)
+                    .OrderByDescending(x => x.MaSp);
+                PagedList<SanPham> models = new PagedList<SanPham>(lssanpham, page, pageSize);
+                ViewBag.CurrentPage = page;
+                ViewBag.Currentloai = danhmuc;
+                return View(models);
+            }
+            catch
+            {
+                return RedirectToAction("index", "Home");
+            }
+        }
 
         [Route("/chitietsanpham/{TenSp}-{MaSp}.html", Name = "chitietsanpham")]
         public IActionResult Details(int MaSp)

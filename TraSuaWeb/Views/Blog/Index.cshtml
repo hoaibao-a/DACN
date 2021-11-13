@@ -67,37 +67,11 @@
                 }
                 <div class="col-lg-12">
                     <div class="pagination-area pt-10">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center">
-                                @if (PageCurent > 1)
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link" href="/blog.html?page=@(PageCurent - 1)" aria-label="Previous">
-                                            <span class="fa fa-chevron-left"></span>
-                                        </a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link" href="/blog.html" aria-label="Next">
-                                            <span class="fa fa-chevron-right"></span>
-                                        </a>
-                                    </li>
-                                }
-                                <li class="page-item active"><a class="page-link" href="/blog.html?page=@PageCurent">@PageCurent</a></li>
-                                <li class="page-item"><a class="page-link" href="/blog.html?page=@PageNext">@PageNext</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="/blog.html?page=@PageNext" aria-label="Next">
-                                        <span class="fa fa-chevron-right"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                        <ul class="pagination justify-content-center">
+                            <pager class="page-container" options="@PagedListRenderOptions.Bootstrap4PageNumbersOnly" list="@Model" asp-controller="Blog" asp-action="Index"></pager>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 </main>
 <!-- Main Content Area End Here -->

@@ -8,10 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TraSuaWeb.Models;
 using webtrasua.helper;
-
+using Microsoft.AspNetCore.Authorization;
 namespace TraSuaWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize()]
     public class TintucsController : Controller
     {
         private readonly DBtrasuaContext _context;
