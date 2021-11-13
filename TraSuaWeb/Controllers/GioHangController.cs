@@ -35,34 +35,32 @@ namespace TraSuaWeb.Controllers
 
         [HttpPost]
         [Route("api/cart/add")]
-        public IActionResult AddToCart(int SanphamID, int? Soluong)
+        public IActionResult AddToCart(int SanphamID,String SizeSP, int? Soluong)
         {
             List<GiohangViewModel> giohang = GioHang;
             try
             {
-                GiohangViewModel item = GioHang.SingleOrDefault(p => p.sanpham.MaSp == SanphamID);
-                if (item != null)
+                //thêm mới sản phẩm vào giỏ hàng
+                GiohangViewModel item = giohang.SingleOrDefault(p => p.sanpham.MaSp == SanphamID);
+                if (item != null)//đã có cập nhật số lượng
                 {
-                    if (Soluong.HasValue)
-                    {
-                        item.Soluong = Soluong.Value;
-                    }
-                    else
-                    {
-                        item.Soluong++;
-                    }
+                    item.Soluong = item.Soluong + Soluong.Value;
+                    HttpContext.Session.Set<List<GiohangViewModel>>("GioHang",giohang);
                 }
                 else
                 {
                     SanPham sp = _context.SanPhams.SingleOrDefault(p => p.MaSp == SanphamID);
+                   
                     item = new GiohangViewModel
                     {
                         Soluong = Soluong.HasValue ? Soluong.Value : 1,
                         sanpham = sp
+                       
                     };
-                    giohang.Add(item);
+                    giohang.Add(item);//thêm vào giỏ hàng
                 }
                 HttpContext.Session.Set<List<GiohangViewModel>>("GioHang", giohang);
+                _notifyService.Success("thêm mới sản phẩm thành công");
                 return Json(new { success = true });
             }
             catch
@@ -72,8 +70,38 @@ namespace TraSuaWeb.Controllers
             // Thêm sản phẩm vào giỏ hàng
 
         }
+        /* 
+                    1. Thêm mới sản phẩm vào giỏ hàng
+                    2. Cập nhật số lượng sản phẩm trong giỏ hàng
+                    3. Xóa sản phẩm khỏi giỏ hàng
+                    4. Xóa luôn giỏ hàng
+         */
         [HttpPost]
-        [Route("api/cart/add")]
+        [Route("api/cart/update")]
+        public IActionResult UpdateCart(int SanphamID, int? Soluong)
+        {
+            var cart = HttpContext.Session.Get<List<GiohangViewModel>>("GioHang");
+            try
+            {
+                if (cart != null)
+                {   
+                    GiohangViewModel item = cart.SingleOrDefault(p => p.sanpham.MaSp == SanphamID);
+                    if (item != null && Soluong.HasValue)
+                    {
+                        item.Soluong = Soluong.Value;
+                    }
+                    HttpContext.Session.Set<List<GiohangViewModel>>("GioHang", cart);
+                }
+                return Json(new { success = true });
+            }
+            catch
+            {
+                return Json(new { success = false });
+            }
+            // Thêm sản phẩm vào giỏ hàng
+        }
+        [HttpPost]
+        [Route("api/cart/remove")]
         public ActionResult Remove(int SanphamID)
         {
             try
@@ -94,11 +122,11 @@ namespace TraSuaWeb.Controllers
             }
 
         }
-        [Route("gioahang.html", Name = "giohang")]
+        [Route("cart.html", Name = "Cart")]
         public IActionResult Index()
         {
-            var lsGioHang = GioHang;
-            return View(GioHang);
+            //var lsGioHang = GioHang;
+            return View(GioHang); 
         }
     }
 }

@@ -53,7 +53,7 @@
                             </div>
                             <!-- Add Pagination -->
                             <div class="swiper-pagination"></div>
-                        </div>                      
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 pt-9 pt-lg-0">
@@ -76,21 +76,22 @@
                             <div class="review-status ps-4">
                                 <a href="javascript:void(0)">( 1 Customer Review )</a>
                             </div>
-                        </div>                       
+                        </div>
                         <div class="selector-wrap color-option pb-2">
                             <span>SIZE</span>
                             <select class="nice-select wide rounded-0">
                                 <option href="/@Model.MaSizeNavigation.LoaiSize">@Model.MaSizeNavigation.LoaiSize</option>
                             </select>
-                        </div>                     
+                        </div>
                         <ul class="quantity-with-btn pb-7">
                             <li class="quantity">
                                 <div class="cart-plus-minus">
-                                    <input class="cart-plus-minus-box" value="1" type="text">
+                                    <input id="txtsoluong" name="txtsoluong" class="cart-plus-minus-box" value="1" type="text">
                                 </div>
                             </li>
                             <li class="add-to-cart">
-                                <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" href="cart.html">Add to cart</a>
+                                <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" href="~/cart.html">Add to cart</a>
+                                <input hidden asp-for="MaSp" />
                             </li>
                             <li class="wishlist-btn-wrap">
                                 <a class="btn rounded-0" href="wishlist.html">
@@ -102,10 +103,10 @@
                             <span class="title">Categories :</span>
                             <ul>
                                 <li>
-                                    <a href="/@Model.MaLoaiNavigation.TenLoai">@Model.MaLoaiNavigation.TenLoai</a>
-                                </li>                               
+                                    <a href="/@Model.MaLoai.Trim()">@Model.MaLoaiNavigation.TenLoai</a>
+                                </li>
                             </ul>
-                        </div>                      
+                        </div>
                         <div class="social-link align-items-center">
                             <span class="title pe-3">Share:</span>
                             <ul>
@@ -140,7 +141,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <ul class="nav product-tab-nav product-tab-style-2" role="tablist">                      
+                    <ul class="nav product-tab-nav product-tab-style-2" role="tablist">
                         <li class="nav-item" role="presentation">
                             <a class="btn btn-custom-size" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">
                                 Reviews
@@ -152,7 +153,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content product-tab-content">                      
+                    <div class="tab-content product-tab-content">
                         <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                             <div class="product-review-body">
                                 <h4 class="heading mb-5">3 Review Items</h4>
@@ -238,7 +239,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                </ul>                              
+                                </ul>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
@@ -286,7 +287,7 @@
                                     foreach (var item in lssanpham)
 
                                     {
-                                        string url= $"/chitietsanpham/{item.TenSp}-{item.MaSp}.html";
+                                        string url = $"/chitietsanpham/{item.TenSp}-{item.MaSp}.html";
                                         <div class="swiper-slide">
                                             <div class="product-item">
                                                 <div class="product-img img-zoom-effect">
@@ -344,3 +345,6 @@
     </div>
 </main>
 <!-- Main Content Area End Here  -->
+@section Scripts{
+    <script src="~/User/assets/js/cart/giohangt.js"></script>
+}
