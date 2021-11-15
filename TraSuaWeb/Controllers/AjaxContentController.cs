@@ -12,7 +12,7 @@ namespace TraSuaWeb.Controllers
         {
             return ViewComponent("HeaderCart");
         }
-        public IActionResult HeaderFavourites()
+        public IActionResult NumberCart()
         {
             return ViewComponent("NumberCart");
         }

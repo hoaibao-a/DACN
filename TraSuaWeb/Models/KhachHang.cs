@@ -19,6 +19,9 @@ namespace TraSuaWeb.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public bool Tinhtrang { get; set; }
+        public int? LocationId { get; set; }
+        public int? QuanHuyen { get; set; }
+        public int? PhuongXa { get; set; }
 
         public virtual ICollection<HoaDon> HoaDons { get; set; }
     }

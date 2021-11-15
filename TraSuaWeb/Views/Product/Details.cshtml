@@ -28,31 +28,10 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="single-product-img">
-                        <div class="swiper-container single-product-slider">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <a href="~/images/@Model.AnhSp" class="single-img gallery-popup">
-                                        <img class="img-full" src="~/images/@Model.AnhSp" alt="Product Image">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="~/User/assets/images/product/large-size/2-2-555x645.jpg" class="single-img gallery-popup">
-                                        <img class="img-full" src="~/User/assets/images/product/large-size/2-2-555x645.jpg" alt="Product Image">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="~/User/assets/images/product/large-size/2-3-555x645.jpg" class="single-img gallery-popup">
-                                        <img class="img-full" src="~/User/assets/images/product/large-size/2-3-555x645.jpg" alt="Product Image">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="~/User/assets/images/product/large-size/2-4-555x645.jpg" class="single-img gallery-popup">
-                                        <img class="img-full" src="~/User/assets/images/product/large-size/2-4-555x645.jpg" alt="Product Image">
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- Add Pagination -->
-                            <div class="swiper-pagination"></div>
+                        <div class="swiper-slide">
+                            <a href="~/images/@Model.AnhSp" class="single-img gallery-popup">
+                                <img class="img-full" src="~/images/@Model.AnhSp" alt="Product Image">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -90,7 +69,7 @@
                                 </div>
                             </li>
                             <li class="add-to-cart">
-                                <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" href="~/cart.html">Add to cart</a>
+                                <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" href="javascrip:void(0)">Add to cart</a>
                                 <input hidden asp-for="MaSp" />
                             </li>
                             <li class="wishlist-btn-wrap">
@@ -338,13 +317,13 @@
                         <!-- Add Arrows -->
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
+                        <div class="offcanvas-minicart_wrapper" id="miniCart">
+                            @await Component.InvokeAsync("HeaderCart")
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </main>
-<!-- Main Content Area End Here  -->
-@section Scripts{
-    <script src="~/User/assets/js/cart/giohangt.js"></script>
-}

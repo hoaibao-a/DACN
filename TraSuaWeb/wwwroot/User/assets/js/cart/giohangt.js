@@ -26,7 +26,7 @@
             });
         });
         function loadHeaderCart() {
-            $("miniCart").load("/AjaxContent/HeaderCart");
+            $("#miniCart").load("/AjaxContent/HeaderCart");
             $("#numberCart").load("/AjaxContent/NumberCart");
         }
         $(".removecart").click(function () {
@@ -35,7 +35,7 @@
                 url: "api/cart/remove",
                 type: "POST",
                 dataType: "JSON",
-                data: { SanphamID: productid },
+                data: { SanphamID: productid, },
                 success: function (resuilt) {
                     if (resuilt.success) {
                         loadHeaderCart();

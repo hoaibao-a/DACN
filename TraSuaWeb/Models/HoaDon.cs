@@ -20,9 +20,12 @@ namespace TraSuaWeb.Models
         public string DiaChiGiaoHang { get; set; }
         public int? TongTien { get; set; }
         public int? Soluong { get; set; }
-        public int HiperId { get; set; }
+        public int? HiperId { get; set; }
         public bool TrangThai { get; set; }
         public int? Id { get; set; }
+        public int? LocationId { get; set; }
+        public int? QuanHuyen { get; set; }
+        public int? PhuongXa { get; set; }
 
         public virtual Shipper Hiper { get; set; }
         public virtual TinhTrang IdNavigation { get; set; }

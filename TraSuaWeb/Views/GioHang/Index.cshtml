@@ -53,7 +53,7 @@
                                                 <td class="product-thumbnail">
                                                     <a href="javascript:void(0)">
                                                         <img src="~/images/@item.sanpham.AnhSp  " alt="@item.sanpham.TenSp" style="width:85px;height:70px;border:0;">
-                                                        
+
                                                     </a>
                                                 </td>
                                                 <td class="product-name"><a href="javascript:void(0)">@item.sanpham.TenSp</a></td>
@@ -93,7 +93,12 @@
                                         @*
                                             <li>Total <span>$118.60</span></li>*@
                                     </ul>
-                                    <a href="javascript:void(0)">Thanh toán</a>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <a href="/checkout.html" class="btn btn-secondary btn-primary-hover">Thanh Toán</a> }
+                                    else
+                                    {
+                                        <a href="dang-nhap.html?returnUrl=/checkout.html" class="btn btn-secondary btn-primary-hover">Thanh Toán</a>}
                                 </div>
                             </div>
                         </div>
@@ -103,7 +108,56 @@
         </div>
     </div>
 </main>
-@section Scripts{
-    <script src="~/User/assets/js/cart/giohangt.js"></script>
-}
-       
+@*@section Scripts{
+        <script>
+            $(document).ready(function () {
+                $(function () {
+                    function loadHeaderCart() {
+                        $("#miniCart").load("/AjaxContent/HeaderCart");
+                        $("#numberCart").load("/AjaxContent/NumberCart");
+                    }
+                    $(".removecart").click(function () {
+                        var productid = $(this).attr("data-mahh");
+                        $.ajax({
+                            url: "api/cart/remove",
+                            type: "POST",
+                            dataType: "JSON",
+                            data: { SanphamID: productid },
+                            success: function (resuilt) {
+                                if (resuilt.success) {
+                                    loadHeaderCart();
+                                    window.location = 'cart.html';
+                                }
+                            },
+                            error: function (rs) {
+                                alert("Remove Cart Error ! ");
+                            }
+                        });
+                    });
+                    $(".cartItem").click(function () {
+                        var productid = $(this).attr("data-mahh");
+                        var soLuong = parseInt($(this).val());
+                        $.ajax({
+                            url: "api/cart/update",
+                            type: "POST",
+                            dateType: "JSON",
+                            data: {
+                                SanphamID: productid,
+                                Soluong: soLuong
+                            },
+                            success: function (resuilt) {
+                                if (resuilt.success) {
+                                    loadHeaderCart();
+                                    window.location = 'cart.html';
+                                }
+                            },
+                            error: function (rs) {
+                                alert("Cập Nhật Giỏ Hàng Thất Bại");
+                            }
+                        });
+                    });
+                });
+            })
+
+        </script>
+    }*@

@@ -23,6 +23,7 @@ namespace TraSuaWeb.Models
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<LoaiSp> LoaiSps { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<Shipper> Shippers { get; set; }
@@ -35,7 +36,7 @@ namespace TraSuaWeb.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=DELL\\SQLEXPRESS;Database=DBtrasua;Integrated Security=True;");
             }
         }
@@ -128,6 +129,8 @@ namespace TraSuaWeb.Models
 
                 entity.Property(e => e.HiperId).HasColumnName("HiperID");
 
+                entity.Property(e => e.LocationId).HasColumnName("LocationID");
+
                 entity.Property(e => e.MaKh).HasColumnName("MaKH");
 
                 entity.Property(e => e.MaTu)
@@ -143,7 +146,6 @@ namespace TraSuaWeb.Models
                 entity.HasOne(d => d.Hiper)
                     .WithMany(p => p.HoaDons)
                     .HasForeignKey(d => d.HiperId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__HoaDon__HiperID__2B3F6F97");
 
                 entity.HasOne(d => d.IdNavigation)
@@ -176,6 +178,8 @@ namespace TraSuaWeb.Models
 
                 entity.Property(e => e.Email).HasMaxLength(50);
 
+                entity.Property(e => e.LocationId).HasColumnName("LocationID");
+
                 entity.Property(e => e.Password)
                     .HasMaxLength(50)
                     .HasColumnName("password");
@@ -205,6 +209,25 @@ namespace TraSuaWeb.Models
                 entity.Property(e => e.Anh).HasMaxLength(250);
 
                 entity.Property(e => e.TenLoai).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Location>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.LocationId)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("LocationID");
+
+                entity.Property(e => e.Name).HasMaxLength(255);
+
+                entity.Property(e => e.NameWithType).HasMaxLength(255);
+
+                entity.Property(e => e.PathWithType).HasMaxLength(255);
+
+                entity.Property(e => e.Slug).HasMaxLength(255);
+
+                entity.Property(e => e.Type).HasMaxLength(255);
             });
 
             modelBuilder.Entity<Role>(entity =>
